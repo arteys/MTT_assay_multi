@@ -5,11 +5,17 @@ import os
 
 
 def conversion(path, label_list):
-    data_df = pd.read_excel(path,skiprows=23,header=None)
-    data_df.drop(columns=[0,1,14], axis=1, inplace=True)
+    data_df = pd.read_excel(path,skiprows=24,header=None)
+
+    data_df.drop(labels=[0,1,14], axis=1, inplace=True)
+    data_df.drop(labels=[6], axis=0, inplace=True)
+
+    labels = data_df.columns
+    print(labels)
 
     result_labels = {label_list[0]:[],label_list[1]:[],label_list[2]:[],'Control':[]}
     results = pd.DataFrame(result_labels)
+
 
     #Concat 3 column
     i = 2
@@ -28,12 +34,15 @@ def conversion(path, label_list):
         os.mkdir(folder_path + '/Converted')
 
     save_path = folder_path + '/Converted/' + file_name + '.xlsx'
-    results.to_excel(save_path,index=False)
+    # results.to_excel(save_path,index=False)
 
-root = tk.Tk()
-paths = fd.askopenfilenames(parent=root, title='Open files')
+# root = tk.Tk()
+# paths = fd.askopenfilenames(parent=root, title='Open files')\
+
+paths = ["D:\\Минин\\07-04-2023 BNAB-110.xlsx"]
 
 label_list = ['10-4','10-5','10-6','Control']
 
 for path in paths:
+    print(path)
     conversion(path,label_list)
