@@ -23,7 +23,7 @@ def conversion(path, label_list):
 
     # Check if folder /Image exists, if no - create one
     if os.path.isdir(folder_path + '/Converted'):
-        print('Image folder already exists')
+        print('Folder already exists')
     else:
         os.mkdir(folder_path + '/Converted')
 
