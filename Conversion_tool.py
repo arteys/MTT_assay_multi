@@ -33,7 +33,7 @@ def conversion(path, label_list):
 root = tk.Tk()
 paths = fd.askopenfilenames(parent=root, title='Open files')
 
-label_list = ['10-4','10-5','10-6','Control']
+label_list = ['10-5','10-6','10-7','Control']
 
 for path in paths:
     conversion(path,label_list)
