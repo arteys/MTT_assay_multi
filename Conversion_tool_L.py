@@ -6,13 +6,17 @@ import numpy as np
 
 label_list = ['10-4','10-5','10-6','Control']
 
-path = "C:\\Users\\Modern\\Desktop\\Бельская\\МТТ_AMB_19-Aug-22_3.21.42_PM.csv"
+path = "C:\\Users\\Modern\\Desktop\\Бельская\\BNPGA-418.xlsx"
 
-data_df = pd.read_csv(path,skiprows=4,header=None, sep='\t')
+data_df = pd.read_excel(path,skiprows=2,header=None)
 
-data_np = data_df[2].to_numpy()
+
+data_np = data_df[3].to_numpy()
+
 
 data_reshape = np.reshape(data_np,(12,8))
 data_rotate = np.rot90(data_reshape)
 
-np.savetxt("C:\\Users\\Modern\\Desktop\\Бельская\\AMB.csv", data_rotate, delimiter=",")
+print(data_rotate)
+
+np.savetxt("C:\\Users\\Modern\\Desktop\\Бельская\\BNPGA-418.csv", data_rotate, delimiter=",")

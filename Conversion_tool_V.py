@@ -16,11 +16,6 @@ def conversion(path, label_list):
     results = pd.DataFrame(result_labels)
 
 
-    #Concat 3 column
-    # i = 2
-    # for label in label_list:
-    #     results[label] = pd.concat([data_df[i],data_df[i+1],data_df[i+2]],ignore_index=True)
-    #     i = i+3
     
     results[label_list[0]] =  pd.concat([data_df[3],data_df[4]],ignore_index=True)
     results[label_list[1]] =  pd.concat([data_df[5],data_df[6],data_df[7]],ignore_index=True)
