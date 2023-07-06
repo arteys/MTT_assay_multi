@@ -31,13 +31,13 @@ def conversion(path, label_list):
     else:
         os.mkdir(folder_path + '/Converted')
 
-    save_path = folder_path + '/Converted/' + file_name + '.xlsx'
-    results.to_excel(save_path,index=False)
+    save_path = folder_path + '/Converted/' + file_name + '.csv'
+    results_dropped.to_csv(save_path,index=False)
 
 root = tk.Tk()
 paths = fd.askopenfilenames(parent=root, title='Open files')
 
-label_list = ['10-5','10-6','10-7','Control']
+label_list = ['10-4','10-5','10-6','Control']
 
 for path in paths:
     conversion(path,label_list)
