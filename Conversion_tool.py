@@ -5,7 +5,7 @@ import os
 
 
 def conversion(path, label_list):
-    data_df = pd.read_excel(path,skiprows=24,header=None)
+    data_df = pd.read_excel(path,skiprows=23,header=None)
     data_df.drop(columns=[0,1,14], axis=1, inplace=True)
 
     result_labels = {label_list[0]:[],label_list[1]:[],label_list[2]:[],'Control':[]}
@@ -21,9 +21,9 @@ def conversion(path, label_list):
     folder_path = os.path.dirname(path)
     file_name,extention = file_name_ext.split(".") 
 
-    results_dropped = results.iloc[::2]
+    # results_dropped = results.iloc[::2] #For double wavelenght data. This thing drops every other row
 
-    print(results_dropped)
+    print(results)
 
     # Check if folder /Image exists, if no - create one
     if os.path.isdir(folder_path + '/Converted'):
@@ -32,7 +32,7 @@ def conversion(path, label_list):
         os.mkdir(folder_path + '/Converted')
 
     save_path = folder_path + '/Converted/' + file_name + '.csv'
-    results_dropped.to_csv(save_path,index=False)
+    results.to_csv(save_path,index=False)
 
 root = tk.Tk()
 paths = fd.askopenfilenames(parent=root, title='Open files')
