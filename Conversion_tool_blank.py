@@ -22,6 +22,7 @@ def conversion(path, label_list):
     folder_path = os.path.dirname(path)
     file_name,extention = file_name_ext.split(".") 
 
+    #Copy blank data to new column and leave NaN behind
     results["Blanks"] = np.nan
     results.loc[0, "Blanks"] = results.loc[0, "10-4"]
     results.loc[1, "Blanks"] = results.loc[23, "10-4"]
@@ -37,13 +38,13 @@ def conversion(path, label_list):
     print(results)
 
     # Check if folder /Converted exists, if no - create one
-#     if os.path.isdir(folder_path + '/Converted'):
-#         print('Folder already exists')
-#     else:
-#         os.mkdir(folder_path + '/Converted')
+    if os.path.isdir(folder_path + '/Converted_blank'):
+        print('Folder already exists')
+    else:
+        os.mkdir(folder_path + '/Converted_blank')
 
-#     save_path = folder_path + '/Converted/' + file_name + '.csv'
-#     results.to_csv(save_path,index=False)
+    save_path = folder_path + '/Converted_blank/' + file_name + '.csv'
+    results.to_csv(save_path,index=False)
 
 root = tk.Tk()
 paths = fd.askopenfilenames(parent=root, title='Open files')
