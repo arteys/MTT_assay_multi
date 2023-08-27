@@ -33,8 +33,8 @@ def conversion(path, label_list):
     else:
         os.mkdir(folder_path + '/Converted')
 
-    save_path = folder_path + '/Converted/' + file_name + '.xlsx'
-    results.to_excel(save_path,index=False)
+    save_path = folder_path + '/Converted/' + file_name + '.csv'
+    results.to_csv(save_path,index=False)
 
 root = tk.Tk()
 paths = fd.askopenfilenames(parent=root, title='Open files')
