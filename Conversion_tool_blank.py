@@ -23,11 +23,12 @@ def conversion(path, label_list):
     file_name,extention = file_name_ext.split(".") 
 
     #Copy blank data to new column and leave NaN behind
-    results["Blanks"] = np.nan
-    results.loc[0, "Blanks"] = results.loc[0, "10-4"]
-    results.loc[1, "Blanks"] = results.loc[23, "10-4"]
-    results.loc[2, "Blanks"] = results.loc[0, "Control"]
-    results.loc[3, "Blanks"] = results.loc[23, "Control"]
+    results["Blank"] = np.nan
+    print(results.loc[23, "10-4"])
+    results.loc[0, "Blank"] = results.loc[0, "10-4"]
+    results.loc[1, "Blank"] = results.loc[7, "10-4"]
+    results.loc[2, "Blank"] = results.loc[16, "Control"]
+    results.loc[3, "Blank"] = results.loc[23, "Control"]
 
     results.loc[0, "10-4"] = np.nan
     results.loc[23, "10-4"] = np.nan
@@ -49,7 +50,7 @@ def conversion(path, label_list):
 root = tk.Tk()
 paths = fd.askopenfilenames(parent=root, title='Open files')
 
-label_list = ['10-4','10-5','10-6','Control']
+label_list = ['10-4','10-6','10-8','Control']
 
 for path in paths:
     conversion(path,label_list)
